@@ -1,14 +1,14 @@
-import type  {HttpContextContract} from '@ioc:Adonis/Core/HttpContext'
-import User from '@ioc:Rlanz/Queue';
-import { Queue } from '@ioc:Rlanz/Queue';
+import type { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
+import User from '../../Models/User'
+import { Queue } from '@ioc:Rlanz/Queue'
 
 export default class SendPushesController {
-    public async send({ request }: HttpContextContract) {
-        const { id, tittle, body } = request.all()
-        const userDB = await User.findOrfail(id)
-        Queue.dispacth('App/Jobs/SendPush', {
+    public async send({request}: HttpContextContract){
+        const { id, title, body} = request.all()
+        const userDB = await User.findOrFail(id)
+        Queue.dispatch('App/Jobs/SendPush', {
             to: userDB.token,
-            tittle,
+            title,
             body
         });
         return userDB
