@@ -16,3 +16,15 @@ Content-Type: application/json
     "email": "samidgiraldello9@gmail.com",
     "password": "12345"
 }
+
+###### Mensagem Push
+POST https://adonis-samid.onrender.com/login HTTP/1.1
+Content-Type: application/json
+Authorization: 
+
+{
+    "id": 1,
+    "title": "oii :) ",
+    "body": "tudo bem com vc?"
+}
+
